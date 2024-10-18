@@ -10,23 +10,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./source/index.js":
-/*!*************************!*\
-  !*** ./source/index.js ***!
-  \*************************/
+/***/ "./source/components/menu/menu.js":
+/*!****************************************!*\
+  !*** ./source/components/menu/menu.js ***!
+  \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./menu */ \"./source/menu.js\");\n\r\nlet menu = (0,_menu__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(['Главная', 'Фото', 'Товар'], 'menu');\r\ndocument.body.appendChild(menu);\n\n//# sourceURL=webpack://webpack/./source/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(array, className) {\r\n    let menu = document.createElement(\"ul\");\r\n    menu.className = className;\r\n    let listItem = \"\";\r\n    array.forEach(function (item) {\r\n        listItem += \"<li>\" + item + \"</li>\";\r\n    });\r\n    menu.innerHTML = listItem;\r\n    return menu;\r\n};\n\n//# sourceURL=webpack://webpack/./source/components/menu/menu.js?");
 
 /***/ }),
 
-/***/ "./source/menu.js":
-/*!************************!*\
-  !*** ./source/menu.js ***!
-  \************************/
+/***/ "./source/pages/blog/blog.js":
+/*!***********************************!*\
+  !*** ./source/pages/blog/blog.js ***!
+  \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(array, className) {\r\n    let menu = document.createElement(\"ul\");\r\n    menu.className = className;\r\n    let listItem = \"\";\r\n    array.forEach(function (item) {\r\n        listItem += \"<li>\" + item + \"</li>\";\r\n    });\r\n    menu.innerHTML = listItem;\r\n    return menu;\r\n};\n\n//# sourceURL=webpack://webpack/./source/menu.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_menu_menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/menu/menu */ \"./source/components/menu/menu.js\");\n\r\nlet menu = (0,_components_menu_menu__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(['Главная', 'Блог'], 'menu');\r\ndocument.body.appendChild(menu);\r\n\r\nconsole.log('in blog.js')\n\n//# sourceURL=webpack://webpack/./source/pages/blog/blog.js?");
 
 /***/ })
 
@@ -90,7 +90,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./source/index.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./source/pages/blog/blog.js");
 /******/ 	
 /******/ })()
 ;
