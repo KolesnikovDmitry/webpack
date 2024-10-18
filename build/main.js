@@ -1,0 +1,1 @@
+(()=>{"use strict";let e=function(){let e=document.createElement("ul");e.className="menu";let n="";return["Главная","Обо мне","О товаре"].forEach((function(e){n+="<li>"+e+"</li>"})),e.innerHTML=n,e}();document.body.appendChild(e)})();
