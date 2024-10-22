@@ -16,16 +16,26 @@ module.exports = {
         filename: '[name].js'
     },
     mode: "development",
+    devServer: {
+        static: "./source",
+        compress: true,
+        port: 9000,
+        hot: true,
+    },
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
             chunks: ['index'],
-            template: PATHS.source + '/pages/index/index.pug'
+            template: PATHS.source + '/pages/index/index.pug',
+            inject: 'body',
+            scriptLoading: 'defer'
         }),
         new HtmlWebpackPlugin({
             filename: 'blog.html',
             chunks: ['blog'],
-            template: PATHS.source + '/pages/blog/blog.pug'
+            template: PATHS.source + '/pages/blog/blog.pug',
+            inject: 'body',
+            scriptLoading: 'defer'
         }),
     ],
     module: {
