@@ -6,7 +6,7 @@ const PATHS = {
     build: path.join(__dirname, 'build')
 };
 
-module.exports = {
+const common = {
     entry: {
         'index': PATHS.source + '/pages/index/index.js',
         'blog': PATHS.source + '/pages/blog/blog.js'
@@ -15,12 +15,19 @@ module.exports = {
         path: PATHS.build,
         filename: '[name].js'
     },
-    mode: "development",
+    //mode: "development",
     devServer: {
         static: "./source",
         compress: true,
         port: 9000,
         hot: true,
+        client: {
+            overlay: {
+                errors: true,
+                warnings: false,
+            },
+            logging: 'warn',
+        },
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -48,5 +55,26 @@ module.exports = {
                 }
             }
         ]
+    },
+};
+
+const developmentConfig = {
+    mode: "development",
+    devtool: 'source-map'
+};
+
+module.exports = function (env) {
+    const isProduction = env === 'production';
+    const isDevelopment = env === 'development';
+
+    const config = {
+        ...common,
+        mode: isProduction ? 'production' : 'development', // установка режима 
+    };
+
+    if (isDevelopment) {
+        config.devtool = 'source-map'; // специфичные настройки для разработки
     }
+
+    return config;
 };
