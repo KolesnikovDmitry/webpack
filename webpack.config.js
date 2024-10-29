@@ -1,8 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { merge } = require('webpack-merge');
-const devserver = require('./webpack/devserver')
-const pug = require('./webpack/pug')
+const devserver = require('./webpack/devserver');
+const pug = require('./webpack/pug');
+const sass = require('./webpack/sass');
 
 const PATHS = {
     source: path.join(__dirname, 'source'),
@@ -38,7 +39,8 @@ const common = merge([
         ],
     },
     devserver(),
-    pug()
+    pug(),
+    sass(),
 ]);
 
 const developmentConfig = {
