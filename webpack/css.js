@@ -3,12 +3,11 @@ module.exports = function (paths) {
         module: {
             rules: [
                 {
-                    test: /\.scss$/,
+                    test: /\.css$/,
                     include: paths,
                     use: [
                         'style-loader',
                         'css-loader',
-                        'sass-loader'
                     ]
                 }
             ]
