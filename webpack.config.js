@@ -4,7 +4,8 @@ const { merge } = require('webpack-merge');
 const devserver = require('./webpack/devserver');
 const pug = require('./webpack/pug');
 const sass = require('./webpack/sass');
-const css = require('./webpack/css')
+const css = require('./webpack/css');
+const extractCss = require('./webpack/css.extract');
 
 const PATHS = {
     source: path.join(__dirname, 'source'),
@@ -19,9 +20,8 @@ const common = merge([
         },
         output: {
             path: PATHS.build,
-            filename: '[name].js'
+            filename: 'js/[name].js'
         },
-        //mode: "development",
         plugins: [
             new HtmlWebpackPlugin({
                 filename: 'index.html',
@@ -37,18 +37,15 @@ const common = merge([
                 inject: 'body',
                 scriptLoading: 'defer'
             }),
+
         ],
     },
     devserver(),
     pug(),
     sass(),
     css(),
+    extractCss()
 ]);
-
-const developmentConfig = {
-    mode: "development",
-    devtool: 'source-map'
-};
 
 module.exports = function (env) {
     const isProduction = env === 'production';
@@ -56,11 +53,15 @@ module.exports = function (env) {
 
     const config = {
         ...common,
-        mode: isProduction ? 'production' : 'development', // установка режима 
+        mode: isProduction ? 'production' : 'development', // установка режима  
     };
 
+    if (isProduction) {
+        config = merge(config, extractCss(PATHS.source));  // Объединяем настройки с extractCss для продакшн режима 
+    }
+
     if (isDevelopment) {
-        config.devtool = 'source-map'; // специфичные настройки для разработки
+        config.devtool = 'source-map'; // специфичные настройки для разработки 
     }
 
     return config;
